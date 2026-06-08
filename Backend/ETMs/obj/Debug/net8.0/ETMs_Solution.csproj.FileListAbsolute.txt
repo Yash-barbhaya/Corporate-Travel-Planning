@@ -1,8 +1,0 @@
-D:\Travel Management System\ETMs\obj\Debug\net8.0\ETMs_Solution.csproj.AssemblyReference.cache
-D:\Travel Management System\ETMs\obj\Debug\net8.0\rpswa.dswa.cache.json
-D:\Travel Management System\ETMs\obj\Debug\net8.0\ETMs_Solution.GeneratedMSBuildEditorConfig.editorconfig
-D:\Travel Management System\ETMs\obj\Debug\net8.0\ETMs_Solution.AssemblyInfoInputs.cache
-D:\Travel Management System\ETMs\obj\Debug\net8.0\ETMs_Solution.AssemblyInfo.cs
-D:\Travel Management System\ETMs\obj\Debug\net8.0\ETMs_Solution.csproj.CoreCompileInputs.cache
-D:\Travel Management System\ETMs\obj\Debug\net8.0\ETMs_Solution.MvcApplicationPartsAssemblyInfo.cs
-D:\Travel Management System\ETMs\obj\Debug\net8.0\ETMs_Solution.MvcApplicationPartsAssemblyInfo.cache
