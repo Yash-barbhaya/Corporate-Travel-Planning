@@ -1,0 +1,28 @@
+D:\Projects\ETMs.Models\bin\Debug\net8.0\ETMs.Models.deps.json
+D:\Projects\ETMs.Models\bin\Debug\net8.0\ETMs.Models.runtimeconfig.json
+D:\Projects\ETMs.Models\bin\Debug\net8.0\ETMs.Models.dll
+D:\Projects\ETMs.Models\bin\Debug\net8.0\ETMs.Models.pdb
+D:\Projects\ETMs.Models\obj\Debug\net8.0\ETMs.Models.csproj.AssemblyReference.cache
+D:\Projects\ETMs.Models\obj\Debug\net8.0\ETMs.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\ETMs.Models\obj\Debug\net8.0\ETMs.Models.AssemblyInfoInputs.cache
+D:\Projects\ETMs.Models\obj\Debug\net8.0\ETMs.Models.AssemblyInfo.cs
+D:\Projects\ETMs.Models\obj\Debug\net8.0\ETMs.Models.csproj.CoreCompileInputs.cache
+D:\Projects\ETMs.Models\obj\Debug\net8.0\ETMs.Models.dll
+D:\Projects\ETMs.Models\obj\Debug\net8.0\refint\ETMs.Models.dll
+D:\Projects\ETMs.Models\obj\Debug\net8.0\ETMs.Models.pdb
+D:\Projects\ETMs.Models\obj\Debug\net8.0\ETMs.Models.genruntimeconfig.cache
+D:\Projects\ETMs.Models\obj\Debug\net8.0\ref\ETMs.Models.dll
+d:\Travel Management System\ETMs.Models\bin\Debug\net8.0\ETMs.Models.deps.json
+d:\Travel Management System\ETMs.Models\bin\Debug\net8.0\ETMs.Models.runtimeconfig.json
+d:\Travel Management System\ETMs.Models\bin\Debug\net8.0\ETMs.Models.dll
+d:\Travel Management System\ETMs.Models\bin\Debug\net8.0\ETMs.Models.pdb
+d:\Travel Management System\ETMs.Models\obj\Debug\net8.0\ETMs.Models.csproj.AssemblyReference.cache
+d:\Travel Management System\ETMs.Models\obj\Debug\net8.0\ETMs.Models.GeneratedMSBuildEditorConfig.editorconfig
+d:\Travel Management System\ETMs.Models\obj\Debug\net8.0\ETMs.Models.AssemblyInfoInputs.cache
+d:\Travel Management System\ETMs.Models\obj\Debug\net8.0\ETMs.Models.AssemblyInfo.cs
+d:\Travel Management System\ETMs.Models\obj\Debug\net8.0\ETMs.Models.csproj.CoreCompileInputs.cache
+d:\Travel Management System\ETMs.Models\obj\Debug\net8.0\ETMs.Models.dll
+d:\Travel Management System\ETMs.Models\obj\Debug\net8.0\refint\ETMs.Models.dll
+d:\Travel Management System\ETMs.Models\obj\Debug\net8.0\ETMs.Models.pdb
+d:\Travel Management System\ETMs.Models\obj\Debug\net8.0\ETMs.Models.genruntimeconfig.cache
+d:\Travel Management System\ETMs.Models\obj\Debug\net8.0\ref\ETMs.Models.dll

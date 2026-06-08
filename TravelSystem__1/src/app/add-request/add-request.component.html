@@ -1,0 +1,239 @@
+<div class="add-request-page">
+  <main class="content-body">
+    <h1 class="page-title">{{ isEditMode ? 'Edit Travel Request' : 'Submit Travel Request' }}</h1>
+      
+      <div class="card form-card">
+        <div class="card-header">
+          <h2>Request Details</h2>
+          <p class="subtitle">Provide your upcoming travel requirements for review.</p>
+        </div>
+
+        <!-- SUCCESS MESSAGE -->
+        <div class="success-alert" *ngIf="successMessage">
+          🎉 {{ successMessage }}
+        </div>
+
+        <!-- ERROR MESSAGE -->
+        <div class="error-alert" *ngIf="errorMessage" style="color: #dc2626; padding: 12px; background: #fee2e2; border-radius: 8px; margin-bottom: 20px; font-weight: 500;">
+          ❌ {{ errorMessage }}
+        </div>
+
+        <form [formGroup]="requestForm" (ngSubmit)="onSubmit()" class="modern-form">
+          <div class="form-grid">
+            
+            <!-- Starting Point -->
+            <div class="form-group full-width">
+              <label for="fromLocation">Starting Point</label>
+              <input 
+                type="text" 
+                id="fromLocation" 
+                formControlName="fromLocation" 
+                placeholder="e.g., Ahmedabad"
+                [class.input-error]="isSubmitted && requestForm.get('fromLocation')?.invalid"
+              >
+              <div class="error-text" *ngIf="isSubmitted && requestForm.get('fromLocation')?.errors?.['required']">
+                Starting point is required.
+              </div>
+              <div class="error-text" *ngIf="isSubmitted && requestForm.get('fromLocation')?.errors?.['minlength']">
+                Starting point must be at least 3 characters long.
+              </div>
+            </div>
+
+            <!-- Destination -->
+            <div class="form-group full-width">
+              <label for="destination">Destination</label>
+              <input 
+                type="text" 
+                id="destination" 
+                formControlName="destination" 
+                placeholder="e.g., Seattle, WA, USA"
+                [class.input-error]="isSubmitted && requestForm.get('destination')?.invalid"
+              >
+              <div class="error-text" *ngIf="isSubmitted && requestForm.get('destination')?.errors?.['required']">
+                Destination is required.
+              </div>
+              <div class="error-text" *ngIf="isSubmitted && requestForm.get('destination')?.errors?.['minlength']">
+                Destination must be at least 3 characters.
+              </div>
+            </div>
+
+            <!-- Purpose -->
+            <div class="form-group full-width">
+              <label for="purpose">Purpose of Travel</label>
+              <textarea 
+                id="purpose" 
+                formControlName="purpose" 
+                rows="3" 
+                placeholder="e.g., Client software integration and quarterly planning"
+                [class.input-error]="isSubmitted && requestForm.get('purpose')?.invalid"
+              ></textarea>
+              <div class="error-text" *ngIf="isSubmitted && requestForm.get('purpose')?.errors?.['required']">
+                Purpose is required.
+              </div>
+              <div class="error-text" *ngIf="isSubmitted && requestForm.get('purpose')?.errors?.['minlength']">
+                Purpose must be at least 5 characters.
+              </div>
+            </div>
+
+            <!-- Start Date -->
+            <div class="form-group">
+              <label for="startDate">Start Date</label>
+              <input 
+                type="date" 
+                id="startDate" 
+                formControlName="startDate"
+                [class.input-error]="isSubmitted && requestForm.get('startDate')?.invalid"
+              >
+              <div class="error-text" *ngIf="isSubmitted && requestForm.get('startDate')?.errors?.['required']">
+                Start Date is required.
+              </div>
+            </div>
+
+            <!-- End Date -->
+            <div class="form-group">
+              <label for="endDate">End Date</label>
+              <input 
+                type="date" 
+                id="endDate" 
+                formControlName="endDate"
+                [class.input-error]="isSubmitted && requestForm.get('endDate')?.invalid"
+              >
+              <div class="error-text" *ngIf="isSubmitted && requestForm.get('endDate')?.errors?.['required']">
+                End Date is required.
+              </div>
+            </div>
+
+            <div class="form-group">
+  <label for="amount">Estimated Budget (₹)</label>
+  <input 
+    type="number" 
+    id="amount" 
+    formControlName="estimatedBudget" 
+    placeholder="e.g., 1500"
+    [class.input-error]="isSubmitted && requestForm.get('estimatedBudget')?.invalid"
+  >
+  <div class="error-text" *ngIf="isSubmitted && requestForm.get('estimatedBudget')?.errors?.['required']">
+    Budget is required.
+  </div>
+  <div class="error-text" *ngIf="isSubmitted && requestForm.get('estimatedBudget')?.errors?.['min']">
+    Budget must be greater than zero.
+  </div>
+</div>
+            <!-- Project Manager -->
+            <div class="form-group">
+              <label for="projectManager">Assigned Manager (Read-Only)</label>
+              <div class="select-wrapper">
+                <select id="projectManager" formControlName="projectManager">
+                  <option [value]="assignedManager ? assignedManager.name : 'N/A'">{{ assignedManager ? assignedManager.name : 'N/A' }}</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ITINERARY PLANNER SECTION -->
+          <div class="card itinerary-card" formArrayName="itineraries">
+            <div class="card-header itinerary-header">
+              <h3>🗺️ Travel Itinerary Planner</h3>
+              <p class="subtitle">Outline your day-by-day travel agenda, destination spots, and accommodations.</p>
+            </div>
+            
+            <div class="itinerary-timeline" *ngIf="itineraryFormArray.controls.length > 0">
+              <div 
+                *ngFor="let item of itineraryFormArray.controls; let i = index" 
+                [formGroupName]="i" 
+                class="itinerary-timeline-card fade-in"
+              >
+                <!-- Card Header: Day Badge and Delete Button -->
+                <div class="timeline-card-header">
+                  <span class="day-badge">📅 Day {{ i + 1 }}</span>
+                  <button 
+                    type="button" 
+                    class="btn-delete-card" 
+                    (click)="removeDay(i)" 
+                    title="Delete Day"
+                  >
+                    🗑️
+                  </button>
+                </div>
+                
+                <!-- 2-Column Responsive Layout -->
+                <div class="timeline-card-body">
+                  <!-- Left Column: Date & Target Location -->
+                  <div class="timeline-col">
+                    <div class="timeline-field">
+                      <label [attr.for]="'date-' + i">Date *</label>
+                      <input 
+                        type="date" 
+                        [id]="'date-' + i"
+                        formControlName="date"
+                        class="itinerary-input"
+                        [class.input-error]="isSubmitted && item.get('date')?.invalid"
+                        [min]="tripMinDate"
+                        [max]="tripMaxDate"
+                      >
+                    </div>
+                    <div class="timeline-field">
+                      <label [attr.for]="'location-' + i">Target Location *</label>
+                      <input 
+                        type="text" 
+                        [id]="'location-' + i"
+                        formControlName="location"
+                        placeholder="e.g. Office HQ"
+                        class="itinerary-input"
+                        [class.input-error]="isSubmitted && item.get('location')?.invalid"
+                      >
+                    </div>
+                  </div>
+                  
+                  <!-- Right Column: Activities Description & Accommodation -->
+                  <div class="timeline-col">
+                    <div class="timeline-field">
+                      <label [attr.for]="'activityDetails-' + i">Activities Description *</label>
+                      <input 
+                        type="text" 
+                        [id]="'activityDetails-' + i"
+                        formControlName="activityDetails"
+                        placeholder="Detail the planned work or activities..."
+                        class="itinerary-input"
+                        [class.input-error]="isSubmitted && item.get('activityDetails')?.invalid"
+                      >
+                    </div>
+                    <div class="timeline-field">
+                      <label [attr.for]="'accommodation-' + i">Accommodation</label>
+                      <input 
+                        type="text" 
+                        [id]="'accommodation-' + i"
+                        formControlName="hotelOrAccommodation"
+                        placeholder="e.g. Hilton Hotel"
+                        class="itinerary-input"
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Empty State for Itinerary -->
+            <div class="itinerary-empty-state" *ngIf="itineraryFormArray.controls.length === 0">
+              <span class="empty-icon">📅</span>
+              <p>No days planned yet. Build your itinerary by clicking the button below.</p>
+            </div>
+
+            <div class="itinerary-actions">
+              <button type="button" class="btn-add-day" (click)="addDay()" [disabled]="itineraryFormArray.length >= maxItineraryDays">
+                ➕ Add Planned Day
+              </button>
+              <small *ngIf="requestForm.get('startDate')?.value && requestForm.get('endDate')?.value && itineraryFormArray.length >= maxItineraryDays" class="text-warning d-block mt-1">⚠️ Maximum itinerary days reached based on your selected travel dates.</small>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" [routerLink]="currentUser?.role === 'manager' ? '/manager/dashboard' : '/employee/dashboard'" class="btn-secondary">Cancel</button>
+            <button type="submit" class="btn-primary">{{ isEditMode ? 'Update Request' : 'Submit Request' }}</button>
+          </div>
+        </form>
+      </div>
+
+    </main>
+</div>

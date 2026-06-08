@@ -1,0 +1,281 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Travel Management System\\ETMs\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{89939F87-1954-4F43-99D5-0BCB08024EBF}|..\\ETMs.API\\ETMs.API.csproj|d:\\travel management system\\etms.api\\controllers\\expensecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36869E6D-ABC5-4551-8917-44C83C56B21B}|..\\ETMs.Services\\ETMs.Services.csproj|d:\\travel management system\\etms.services\\implementations\\travelservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36869E6D-ABC5-4551-8917-44C83C56B21B}|..\\ETMs.Services\\ETMs.Services.csproj|d:\\travel management system\\etms.services\\implementations\\expenseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89939F87-1954-4F43-99D5-0BCB08024EBF}|..\\ETMs.API\\ETMs.API.csproj|d:\\travel management system\\etms.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89939F87-1954-4F43-99D5-0BCB08024EBF}|..\\ETMs.API\\ETMs.API.csproj|d:\\travel management system\\etms.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C142002E-9C34-4B73-B6A7-587F945CC82D}|..\\ETMs.Models\\ETMs.Models.csproj|d:\\travel management system\\etms.models\\enums\\travelstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\yashp\\AppData\\Local\\Temp\\wm514hgy..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\.net22\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD449CC5-D229-4B69-88CD-297E190BB66E}|..\\ETMs.Data\\ETMs.Data.csproj|d:\\travel management system\\etms.data\\context\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89939F87-1954-4F43-99D5-0BCB08024EBF}|..\\ETMs.API\\ETMs.API.csproj|d:\\travel management system\\etms.api\\controllers\\travelcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD449CC5-D229-4B69-88CD-297E190BB66E}|..\\ETMs.Data\\ETMs.Data.csproj|d:\\travel management system\\etms.data\\repository\\travelrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD449CC5-D229-4B69-88CD-297E190BB66E}|..\\ETMs.Data\\ETMs.Data.csproj|d:\\travel management system\\etms.data\\entities\\travelrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C142002E-9C34-4B73-B6A7-587F945CC82D}|..\\ETMs.Models\\ETMs.Models.csproj|d:\\travel management system\\etms.models\\enums\\expensetype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C142002E-9C34-4B73-B6A7-587F945CC82D}|..\\ETMs.Models\\ETMs.Models.csproj|d:\\travel management system\\etms.models\\dtos\\employeedashboardstatsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C142002E-9C34-4B73-B6A7-587F945CC82D}|..\\ETMs.Models\\ETMs.Models.csproj|d:\\travel management system\\etms.models\\dtos\\travelrequestcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD449CC5-D229-4B69-88CD-297E190BB66E}|..\\ETMs.Data\\ETMs.Data.csproj|d:\\travel management system\\etms.data\\entities\\itinerary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD449CC5-D229-4B69-88CD-297E190BB66E}|..\\ETMs.Data\\ETMs.Data.csproj|d:\\travel management system\\etms.data\\migrations\\20260530195111_additinerarytable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ExpenseController.cs",
+              "DocumentMoniker": "D:\\Travel Management System\\ETMs.API\\Controllers\\ExpenseController.cs",
+              "RelativeDocumentMoniker": "..\\ETMs.API\\Controllers\\ExpenseController.cs",
+              "ToolTip": "D:\\Travel Management System\\ETMs.API\\Controllers\\ExpenseController.cs",
+              "RelativeToolTip": "..\\ETMs.API\\Controllers\\ExpenseController.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABMAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T09:18:13.607Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ExpenseService.cs",
+              "DocumentMoniker": "D:\\Travel Management System\\ETMs.Services\\Implementations\\ExpenseService.cs",
+              "RelativeDocumentMoniker": "..\\ETMs.Services\\Implementations\\ExpenseService.cs",
+              "ToolTip": "D:\\Travel Management System\\ETMs.Services\\Implementations\\ExpenseService.cs",
+              "RelativeToolTip": "..\\ETMs.Services\\Implementations\\ExpenseService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T09:20:24.799Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\Travel Management System\\ETMs.API\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "..\\ETMs.API\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\Travel Management System\\ETMs.API\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "..\\ETMs.API\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T09:18:06.209Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Travel Management System\\ETMs.API\\Program.cs",
+              "RelativeDocumentMoniker": "..\\ETMs.API\\Program.cs",
+              "ToolTip": "D:\\Travel Management System\\ETMs.API\\Program.cs",
+              "RelativeToolTip": "..\\ETMs.API\\Program.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T09:17:34.301Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TravelStatus.cs",
+              "DocumentMoniker": "D:\\Travel Management System\\ETMs.Models\\Enums\\TravelStatus.cs",
+              "RelativeDocumentMoniker": "..\\ETMs.Models\\Enums\\TravelStatus.cs",
+              "ToolTip": "D:\\Travel Management System\\ETMs.Models\\Enums\\TravelStatus.cs",
+              "RelativeToolTip": "..\\ETMs.Models\\Enums\\TravelStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-02T05:24:30.073Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "wm514hgy..sql",
+              "DocumentMoniker": "C:\\Users\\yashp\\AppData\\Local\\Temp\\wm514hgy..sql",
+              "ToolTip": "C:\\Users\\yashp\\AppData\\Local\\Temp\\wm514hgy..sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-06-02T05:23:50.156Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Microsoft.Common.CurrentVersion.targets",
+              "DocumentMoniker": "D:\\.net22\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeDocumentMoniker": "..\\..\\.net22\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ToolTip": "D:\\.net22\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeToolTip": "..\\..\\.net22\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ViewState": "AgIAANYTAAAAAAAAAAAUwOQTAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2026-06-01T12:08:09.328Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TravelService.cs",
+              "DocumentMoniker": "D:\\Travel Management System\\ETMs.Services\\Implementations\\TravelService.cs",
+              "RelativeDocumentMoniker": "..\\ETMs.Services\\Implementations\\TravelService.cs",
+              "ToolTip": "D:\\Travel Management System\\ETMs.Services\\Implementations\\TravelService.cs",
+              "RelativeToolTip": "..\\ETMs.Services\\Implementations\\TravelService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHwAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-01T08:41:40.511Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\Travel Management System\\ETMs.Data\\Context\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "..\\ETMs.Data\\Context\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\Travel Management System\\ETMs.Data\\Context\\ApplicationDbContext.cs",
+              "RelativeToolTip": "..\\ETMs.Data\\Context\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-01T12:07:17.167Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TravelRepository.cs",
+              "DocumentMoniker": "D:\\Travel Management System\\ETMs.Data\\Repository\\TravelRepository.cs",
+              "RelativeDocumentMoniker": "..\\ETMs.Data\\Repository\\TravelRepository.cs",
+              "ToolTip": "D:\\Travel Management System\\ETMs.Data\\Repository\\TravelRepository.cs",
+              "RelativeToolTip": "..\\ETMs.Data\\Repository\\TravelRepository.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAqwEMAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-01T09:49:33.428Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ExpenseType.cs",
+              "DocumentMoniker": "D:\\Travel Management System\\ETMs.Models\\Enums\\ExpenseType.cs",
+              "RelativeDocumentMoniker": "..\\ETMs.Models\\Enums\\ExpenseType.cs",
+              "ToolTip": "D:\\Travel Management System\\ETMs.Models\\Enums\\ExpenseType.cs",
+              "RelativeToolTip": "..\\ETMs.Models\\Enums\\ExpenseType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-01T09:28:00.645Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TravelController.cs",
+              "DocumentMoniker": "D:\\Travel Management System\\ETMs.API\\Controllers\\TravelController.cs",
+              "RelativeDocumentMoniker": "..\\ETMs.API\\Controllers\\TravelController.cs",
+              "ToolTip": "D:\\Travel Management System\\ETMs.API\\Controllers\\TravelController.cs",
+              "RelativeToolTip": "..\\ETMs.API\\Controllers\\TravelController.cs",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAgwIcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-01T05:13:11.067Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "EmployeeDashboardStatsDTO.cs",
+              "DocumentMoniker": "D:\\Travel Management System\\ETMs.Models\\DTOs\\EmployeeDashboardStatsDTO.cs",
+              "RelativeDocumentMoniker": "..\\ETMs.Models\\DTOs\\EmployeeDashboardStatsDTO.cs",
+              "ToolTip": "D:\\Travel Management System\\ETMs.Models\\DTOs\\EmployeeDashboardStatsDTO.cs",
+              "RelativeToolTip": "..\\ETMs.Models\\DTOs\\EmployeeDashboardStatsDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-01T05:05:28.633Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "TravelRequest.cs",
+              "DocumentMoniker": "D:\\Travel Management System\\ETMs.Data\\Entities\\TravelRequest.cs",
+              "RelativeDocumentMoniker": "..\\ETMs.Data\\Entities\\TravelRequest.cs",
+              "ToolTip": "D:\\Travel Management System\\ETMs.Data\\Entities\\TravelRequest.cs",
+              "RelativeToolTip": "..\\ETMs.Data\\Entities\\TravelRequest.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAB4AAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-31T09:49:30.396Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "TravelRequestCreateDTO.cs",
+              "DocumentMoniker": "D:\\Travel Management System\\ETMs.Models\\DTOs\\TravelRequestCreateDTO.cs",
+              "RelativeDocumentMoniker": "..\\ETMs.Models\\DTOs\\TravelRequestCreateDTO.cs",
+              "ToolTip": "D:\\Travel Management System\\ETMs.Models\\DTOs\\TravelRequestCreateDTO.cs",
+              "RelativeToolTip": "..\\ETMs.Models\\DTOs\\TravelRequestCreateDTO.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAqwBwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-30T20:37:14.345Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "20260530195111_AddItineraryTable.cs",
+              "DocumentMoniker": "D:\\Travel Management System\\ETMs.Data\\Migrations\\20260530195111_AddItineraryTable.cs",
+              "RelativeDocumentMoniker": "..\\ETMs.Data\\Migrations\\20260530195111_AddItineraryTable.cs",
+              "ToolTip": "D:\\Travel Management System\\ETMs.Data\\Migrations\\20260530195111_AddItineraryTable.cs",
+              "RelativeToolTip": "..\\ETMs.Data\\Migrations\\20260530195111_AddItineraryTable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-30T19:51:12.262Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Itinerary.cs",
+              "DocumentMoniker": "D:\\Travel Management System\\ETMs.Data\\Entities\\Itinerary.cs",
+              "RelativeDocumentMoniker": "..\\ETMs.Data\\Entities\\Itinerary.cs",
+              "ToolTip": "D:\\Travel Management System\\ETMs.Data\\Entities\\Itinerary.cs",
+              "RelativeToolTip": "..\\ETMs.Data\\Entities\\Itinerary.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAoAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-30T19:49:18.888Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

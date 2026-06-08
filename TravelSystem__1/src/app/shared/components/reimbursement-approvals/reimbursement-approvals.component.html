@@ -1,0 +1,159 @@
+<div class="approvals-container fade-in">
+  <div class="header-section">
+    <h2>Reimbursement Approvals</h2>
+    <p>Review and process employee expense claims.</p>
+  </div>
+
+  <div class="table-card glass-panel">
+    <div class="table-responsive">
+      <table class="approvals-table">
+        <thead>
+          <tr>
+            <th>Employee Name</th>
+            <th>Request ID</th>
+            <th>Category</th>
+            <th>Amount (₹)</th>
+            <th>Description</th>
+            <th>Receipt</th>
+            <th class="actions-col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let claim of reimbursementClaims">
+            <tr class="table-row">
+              <td class="font-medium">{{ claim.employeeName }}</td>
+              <td>
+                #{{ claim.travelRequestId }}
+                <button 
+                  *ngIf="claim.itineraries && claim.itineraries.length > 0" 
+                  type="button" 
+                  class="btn-itinerary-toggle" 
+                  [class.active]="claim.showItinerary"
+                  (click)="claim.showItinerary = !claim.showItinerary"
+                  [title]="claim.showItinerary ? 'Hide Itinerary' : 'View Itinerary'"
+                >
+                  🗺️ Itinerary
+                </button>
+              </td>
+              <td>
+                <span class="category-badge">{{ claim.category }}</span>
+              </td>
+              <td class="amount-cell">
+                <div *ngIf="claim.isEditing" class="editable-container">
+                  <input type="number" class="edit-input" [(ngModel)]="claim.editableAmount" />
+                  <button class="btn-save-cap" (click)="claim.isEditing = false" title="Save Cap">✔️</button>
+                </div>
+                <div *ngIf="!claim.isEditing" class="editable-container">
+                  <span *ngIf="claim.editableAmount !== undefined && claim.editableAmount < claim.requestedAmount">
+                    ₹{{ claim.editableAmount }} <span class="capped-from-label">₹{{ claim.requestedAmount }}</span>
+                  </span>
+                  <span *ngIf="claim.editableAmount === undefined || claim.editableAmount >= claim.requestedAmount">
+                    ₹{{ claim.requestedAmount }}
+                  </span>
+                  <button class="btn-cap-trigger" (click)="claim.isEditing = true; claim.editableAmount = claim.requestedAmount" title="Cap Amount">
+                    ✏️ Cap
+                  </button>
+                </div>
+              </td>
+              <td class="desc-cell" [title]="claim.description">{{ claim.description }}</td>
+              <td>
+                <span *ngIf="!claim.receiptUrl" class="text-muted text-xs">Missing File</span>
+                <a *ngIf="claim.receiptUrl" [href]="claim.receiptUrl" target="_blank" class="btn btn-sm btn-outline-primary py-1 px-2">
+                  📄 View Receipt
+                </a>
+              </td>
+              <td class="actions-cell">
+                <button class="btn btn-approve" (click)="approveClaim(claim)">
+                  <span class="icon">✓</span> Approve
+                </button>
+                <button class="btn btn-reject" (click)="openRejectModal(claim)">
+                  <span class="icon">✕</span> Reject
+                </button>
+              </td>
+            </tr>
+
+            <!-- Expandable Itinerary Row -->
+            <tr *ngIf="claim.itineraries && claim.itineraries.length > 0 && claim.showItinerary" class="itinerary-detail-row fade-in">
+              <td colspan="7">
+                <div class="itinerary-detail-card glass-panel">
+                  <div class="itinerary-detail-header">
+                    <h4>📋 Travel Itinerary Details</h4>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="itinerary-detail-table">
+                      <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Destination</th>
+                          <th>Planned Activities & Agenda</th>
+                          <th>Accommodation</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let day of claim.itineraries">
+                          <td>{{ day.date | date:'mediumDate' }}</td>
+                          <td><strong>{{ day.location }}</strong></td>
+                          <td>{{ day.activityDetails }}</td>
+                          <td>
+                            <span class="badge bg-secondary">{{ day.hotelOrAccommodation || 'Self-Arranged/None' }}</span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </ng-container>
+          <tr *ngIf="reimbursementClaims.length === 0">
+            <td colspan="7" class="empty-state">
+              <div class="empty-content">
+                <span class="empty-icon">📂</span>
+                <p>No pending reimbursement claims to review.</p>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Rejection Modal -->
+  <div class="modal-backdrop" *ngIf="showRejectModal" (click)="closeModal()">
+    <div class="modal-content glass-modal" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h3>Reject Reimbursement Claim</h3>
+        <button class="close-btn" (click)="closeModal()">×</button>
+      </div>
+      
+      <div class="modal-body">
+        <p class="warning-text">You are about to reject claim <strong>#{{ currentClaimToReject?.expenseId }}</strong> from <strong>{{ currentClaimToReject?.employeeName }}</strong>.</p>
+        
+        <div class="form-group">
+          <label for="rejectReason">Reason for Rejection <span class="required">*</span></label>
+          <select id="rejectReason" class="form-control" [(ngModel)]="selectedReason">
+            <option value="" disabled selected>Select a reason...</option>
+            <option *ngFor="let reason of rejectionReasons" [value]="reason">{{ reason }}</option>
+          </select>
+        </div>
+
+        <div class="form-group slide-down" *ngIf="selectedReason === 'Other'">
+          <label for="customReason">Specify Custom Reason <span class="required">*</span></label>
+          <textarea 
+            id="customReason" 
+            class="form-control" 
+            [(ngModel)]="customReason" 
+            rows="3" 
+            placeholder="Please provide specific details for rejection..."></textarea>
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+        <button class="btn btn-danger" [disabled]="!selectedReason || (selectedReason === 'Other' && !customReason.trim())" (click)="confirmReject()">
+          Confirm Rejection
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

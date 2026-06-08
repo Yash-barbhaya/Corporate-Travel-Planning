@@ -1,0 +1,207 @@
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-canvas);
+  font-family: 'Inter', sans-serif;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 40px; /* p-5 generous interior padding */
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  animation: fadeIn 0.4s ease-out;
+
+  .card-header {
+    text-align: center;
+    margin-bottom: 32px;
+
+    h1 {
+      color: var(--color-navy-primary);
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.login-form {
+  .form-group {
+    margin-bottom: 24px;
+
+    label {
+      display: block;
+      color: var(--color-text-main);
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: #FFFFFF;
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 8px;
+      transition: all 0.2s ease;
+
+      .icon {
+        padding: 0 12px 0 16px;
+        font-size: 1.1rem;
+        color: var(--color-text-muted);
+      }
+
+      input {
+        width: 100%;
+        padding: 12px 16px 12px 0;
+        background: transparent;
+        border: none;
+        color: var(--color-text-main);
+        font-size: 0.95rem;
+        outline: none;
+
+        &::placeholder {
+          color: #94a3b8;
+        }
+      }
+
+      &:focus-within {
+        border-color: var(--color-teal-action);
+        box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+      }
+
+      &.error {
+        border-color: var(--color-coral-danger);
+        box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.15);
+      }
+    }
+
+    .error-msg {
+      color: var(--color-coral-danger);
+      font-size: 0.75rem;
+      margin-top: 6px;
+      padding-left: 4px;
+      font-weight: 500;
+    }
+  }
+}
+
+.form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  font-size: 0.875rem;
+
+  .remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    font-weight: 500;
+
+    input {
+      cursor: pointer;
+      accent-color: var(--color-teal-action);
+    }
+  }
+
+  .forgot-password {
+    color: var(--color-teal-action);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #0f766e;
+    }
+  }
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--color-teal-action);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.15);
+
+  &:hover:not(:disabled) {
+    background: #0f766e;
+    box-shadow: 0 6px 16px rgba(13, 148, 136, 0.25);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .loader {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 0.8s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error-summary {
+  background: rgba(225, 29, 72, 0.05);
+  color: var(--color-coral-danger);
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.875rem;
+  margin-top: 16px;
+  border: 1px solid rgba(225, 29, 72, 0.1);
+  font-weight: 500;
+}
+
+.card-footer {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+
+  a {
+    color: var(--color-teal-action);
+    text-decoration: none;
+    font-weight: 600;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

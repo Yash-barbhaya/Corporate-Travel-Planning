@@ -1,0 +1,116 @@
+<aside class="sidebar" [class.pinned]="isPinned">
+  <div class="sidebar-top">
+    <div class="logo-area">
+      <span class="logo-icon">✈️</span>
+      <span class="logo-text">Travel Port</span>
+    </div>
+    <button class="toggle-btn" (click)="togglePin()">
+      <span class="hamburger">☰</span>
+    </button>
+  </div>
+
+  <ul class="sidebar-menu">
+    <!-- DASHBOARD -->
+    <li>
+      <a [routerLink]="['/', role, 'dashboard']" routerLinkActive="active" class="menu-item">
+        <span class="icon">🏠</span>
+        <span class="label">Dashboard</span>
+      </a>
+    </li>
+
+    <!-- MY TRIPS GROUP (Hidden for Admin) -->
+    <li *ngIf="role !== 'admin'" class="has-submenu" [class.open]="activeSubMenu === 'trips'">
+      <div class="menu-item" (click)="toggleSubMenu('trips')">
+        <span class="icon">✈️</span>
+        <span class="label">My Trips</span>
+        <span class="arrow" *ngIf="isPinned">▼</span>
+      </div>
+      <ul class="submenu" *ngIf="activeSubMenu === 'trips'">
+        <li>
+          <a [routerLink]="['/', role, 'my-trips', 'active']" routerLinkActive="active" class="submenu-item">
+            <span class="dot">•</span>
+            <span class="label">Active Requests</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/', role, 'my-trips', 'history']" routerLinkActive="active" class="submenu-item">
+            <span class="dot">•</span>
+            <span class="label">Travel History</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- EXPENSES GROUP (Hidden for Admin) -->
+    <li *ngIf="role !== 'admin'" class="has-submenu" [class.open]="activeSubMenu === 'expenses'">
+      <div class="menu-item" (click)="toggleSubMenu('expenses')">
+        <span class="icon">💰</span>
+        <span class="label">Expenses</span>
+        <span class="arrow" *ngIf="isPinned">▼</span>
+      </div>
+      <ul class="submenu" *ngIf="activeSubMenu === 'expenses'">
+        <li>
+          <a [routerLink]="['/', role, 'expenses', 'upload-bills']" routerLinkActive="active" class="submenu-item">
+            <span class="dot">•</span>
+            <span class="label">Upload Bills</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/', role, 'expenses', 'reimbursements']" routerLinkActive="active" class="submenu-item">
+            <span class="dot">•</span>
+            <span class="label">Reimbursements</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- MANAGEMENT SECTION -->
+    <ng-container *ngIf="role === 'manager' || role === 'finance'">
+      <li *ngIf="role === 'manager'">
+        <a [routerLink]="['/manager/team-requests']" routerLinkActive="active" class="menu-item">
+          <span class="icon">👥</span>
+          <span class="label">Team Requests</span>
+        </a>
+      </li>
+      <li *ngIf="role === 'manager'">
+        <a [routerLink]="['/manager/approvals']" routerLinkActive="active" class="menu-item">
+          <span class="icon">✅</span>
+          <span class="label">Approvals</span>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/', role, 'reimbursement-approvals']" routerLinkActive="active" class="menu-item">
+          <span class="icon">📄</span>
+          <span class="label">Reimbursement Approvals</span>
+        </a>
+      </li>
+    </ng-container>
+
+    <!-- ADMIN SECTION -->
+    <ng-container *ngIf="role === 'admin'">
+      <li>
+        <a [routerLink]="['/admin/budgets']" routerLinkActive="active" class="menu-item">
+          <span class="icon">📊</span>
+          <span class="label">Department Budgets</span>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/admin/employees']" routerLinkActive="active" class="menu-item">
+          <span class="icon">👥</span>
+          <span class="label">Employee Directory</span>
+        </a>
+      </li>
+    </ng-container>
+  </ul>
+
+  <div class="sidebar-bottom">
+    <a [routerLink]="['/', role, 'profile']" routerLinkActive="active" class="menu-item profile-link">
+      <span class="icon">⚙️</span>
+      <span class="label">Profile</span>
+    </a>
+    <button class="logout-btn" (click)="logout()">
+      <span class="icon">🚪</span>
+      <span class="label">Logout</span>
+    </button>
+  </div>
+</aside>

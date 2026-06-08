@@ -1,0 +1,6 @@
+@ETMs_HostAddress = http://localhost:5063
+
+GET {{ETMs_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

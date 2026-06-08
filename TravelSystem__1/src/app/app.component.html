@@ -1,0 +1,65 @@
+<div class="app-layout" [class.logged-in]="authService.isLoggedIn()">
+  <app-sidebar 
+    *ngIf="authService.isLoggedIn() && !isLoginPage" 
+    [role]="authService.currentUserValue?.role || 'employee'" 
+    [isCollapsed]="isSidebarCollapsed" 
+    (toggle)="toggleSidebar($event)">
+  </app-sidebar>
+  
+  <div class="main-container" [class.sidebar-expanded]="!isSidebarCollapsed && !isLoginPage" [class.no-layout]="isLoginPage" (click)="closeProfileDropdown()">
+    <header class="top-navbar" *ngIf="authService.isLoggedIn() && !isLoginPage">
+      <div class="header-left">
+        <div class="greeting-area">
+          <span class="greeting-text">{{ greeting }}, <strong>{{ firstName }}</strong>!</span>
+          <span class="sub-text">{{ subText }}</span>
+        </div>
+      </div>
+
+      <div class="header-center">
+        <div class="search-container">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search requests..." [(ngModel)]="searchTerm" (ngModelChange)="onSearchChange($event)">
+        </div>
+      </div>
+      
+      <div class="header-right">
+        <button class="create-nav-btn" [routerLink]="['/', authService.currentUserValue?.role, 'create-request']" 
+                *ngIf="authService.currentUserValue?.role === 'employee' || authService.currentUserValue?.role === 'manager'">
+          <span class="plus">+</span> Create New Request
+        </button>
+        
+        <div class="user-profile-container">
+          <div class="user-info-trigger" (click)="toggleProfileDropdown($event)">
+            <span class="full-name">{{ authService.currentUserValue?.name }}</span>
+            <div class="circular-avatar">
+              {{ authService.currentUserValue?.name?.charAt(0) }}
+            </div>
+          </div>
+
+          <!-- Dropdown Menu -->
+          <div class="profile-dropdown" [class.show]="showProfileDropdown" (click)="$event.stopPropagation()">
+            <div class="dropdown-header">
+              <strong>{{ authService.currentUserValue?.name }}</strong>
+              <span>{{ authService.currentUserValue?.email }}</span>
+            </div>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item">
+              <span class="item-icon">🔑</span> Edit Password
+            </a>
+            <a class="dropdown-item">
+              <span class="item-icon">👤</span> Edit Profile
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item logout" (click)="logout()">
+              <span class="item-icon">🚪</span> Logout
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="page-body" [class.no-padding]="isLoginPage">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

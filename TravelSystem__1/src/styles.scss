@@ -1,0 +1,187 @@
+/* Global Design System Variables - Premium Corporate Navy Blue & Teal Light Theme */
+:root {
+  --color-bg-canvas: #F8FAFC;     /* Light, crisp slate-white background fabric */
+  --color-surface-card: #FFFFFF;  /* Pure white background for all cards, forms, and tables */
+  --color-navy-primary: #1E3A8A;   /* Primary corporate text, brand headers, and structural elements */
+  --color-teal-action: #0D9488;   /* Primary active action items, buttons, and focus triggers */
+  --color-border-subtle: #E2E8F0; /* Thin, soft gray divider lines */
+  --color-text-main: #0F172A;     /* Deep slate-black for high-contrast, effortless body readability */
+  --color-text-muted: #64748B;    /* Muted gray for secondary labels, subheaders, and helper text */
+  --color-coral-danger: #EF4444;  /* Crimson/coral red for validation errors and critical states */
+}
+
+/* Global Reset & Body styling */
+html, body {
+  height: 100%;
+  background-color: var(--color-bg-canvas);
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  font-family: 'Outfit', 'Inter', Roboto, "Helvetica Neue", sans-serif;
+  color: var(--color-text-main);
+  background-color: var(--color-bg-canvas);
+}
+
+/* Global inputs focus and style states for Light Corporate Theme */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+  background-color: #FFFFFF !important;
+  border: 1px solid var(--color-border-subtle) !important;
+  color: var(--color-text-main) !important;
+  border-radius: 8px !important;
+  padding: 10px 14px !important;
+
+  &::placeholder {
+    color: var(--color-text-muted) !important;
+    opacity: 0.8 !important;
+  }
+
+  &:focus {
+    border-color: var(--color-teal-action) !important;
+    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15) !important;
+    outline: none !important;
+  }
+}
+
+/* Premium Data Grids & Workspace Tables - Universal overrides */
+table {
+  border-collapse: collapse !important;
+  background-color: transparent !important;
+  
+  th, td {
+    border-left: none !important;
+    border-right: none !important;
+    padding: 18px 24px !important; /* spacious cell padding */
+    border-bottom: 1px solid var(--color-border-subtle) !important; /* horizontal divider only */
+    color: var(--color-text-main) !important;
+  }
+
+  th {
+    background-color: #F1F5F9 !important;
+    color: var(--color-text-muted) !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 0.05em !important;
+  }
+  
+  tr:hover td {
+    background-color: rgba(30, 58, 138, 0.02) !important;
+  }
+
+  tr:last-child td {
+    border-bottom: none !important;
+  }
+}
+
+/* Beautiful Rounded Transparent Pastel Status Badges for Corporate Theme */
+.status-badge,
+app-status-badge .status-badge {
+  padding: 6px 16px !important;
+  border-radius: 9999px !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.025em !important;
+  display: inline-block !important;
+  border: none !important;
+  white-space: nowrap !important;
+}
+
+/* 'Pending' (Amber background with dark orange text) */
+.status-pending,
+.status-badge.pending,
+.status-badge[class*="pending"] {
+  background-color: rgba(245, 158, 11, 0.1) !important;
+  color: #D97706 !important;
+}
+
+/* 'PartiallyApproved' (2) / 'Manager Approved' (Light sky-blue) */
+.status-manager-approved,
+.status-badge.manager-approved,
+.status-badge.partially-approved,
+.status-badge.partiallyapproved,
+.status-badge.managerapproved,
+.status-badge[class*="manager"],
+.status-badge[class*="partial"] {
+  background-color: rgba(14, 165, 233, 0.1) !important;
+  color: #0284C7 !important;
+}
+
+/* 'FullyApproved' (3) / 'Approved' (Light mint background with dark emerald-green text) */
+.status-approved,
+.status-badge.approved,
+.status-badge.fully-approved,
+.status-badge.fullyapproved,
+.status-badge[class*="approved"],
+.status-badge[class*="success"] {
+  background-color: rgba(16, 185, 129, 0.1) !important;
+  color: #059669 !important;
+}
+
+/* 'OutOfBudget' (4) / 'Rejected' (Light coral background with deep crimson text) */
+.status-rejected,
+.status-badge.rejected,
+.status-badge.out-of-budget,
+.status-badge.outofbudget,
+.status-badge[class*="rejected"],
+.status-badge[class*="out"] {
+  background-color: rgba(244, 63, 94, 0.1) !important;
+  color: #E11D48 !important;
+}
+
+/* Global button styles for Navy & Teal Corporate Theme */
+.btn-primary,
+.action-btn:not(.secondary):not(.danger),
+.create-nav-btn {
+  background: var(--color-teal-action) !important;
+  color: #FFFFFF !important; /* crisp white text */
+  border-radius: 8px !important;
+  font-weight: 700 !important;
+  border: none !important;
+  transition: opacity 0.2s ease, transform 0.2s ease !important;
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.15) !important;
+
+  &:hover {
+    opacity: 0.9 !important;
+    transform: translateY(-1px) !important;
+  }
+}
+
+.btn-secondary,
+.action-btn.secondary {
+  background: var(--color-surface-card) !important;
+  color: var(--color-text-main) !important;
+  border: 1px solid var(--color-border-subtle) !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  transition: background-color 0.2s ease, border-color 0.2s ease !important;
+
+  &:hover {
+    background-color: #F8FAFC !important;
+    border-color: var(--color-teal-action) !important;
+  }
+}
+
+/* Scrollbar Customization for Light Theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-canvas);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-subtle);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+}

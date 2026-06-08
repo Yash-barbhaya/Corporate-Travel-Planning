@@ -1,0 +1,221 @@
+<div class="page-container">
+  <!-- Header Section -->
+  <div class="top-nav">
+    <button class="back-btn" [routerLink]="backLink">
+      <span class="icon">←</span> Back to Dashboard
+    </button>
+  </div>
+
+  <div *ngIf="requestDetails; else loading" class="executive-card fade-in">
+    <!-- Header Banner -->
+    <div class="card-header">
+      <div class="header-content">
+        <div class="title-group">
+          <h1>Travel Request #{{ requestDetails.id }}</h1>
+          <span class="status-badge" [ngClass]="getStatusClass(requestDetails.status)">
+            {{ getStatusLabel(requestDetails.status) }}
+          </span>
+        </div>
+        <div class="employee-meta">
+          <div class="avatar">{{ requestDetails.employeeName ? requestDetails.employeeName[0] : 'E' }}</div>
+          <div class="emp-info">
+            <h2>{{ requestDetails.employeeName }}</h2>
+            <p>{{ requestDetails.department || 'General' }} Department</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Details Grid -->
+    <div class="card-body">
+      <div class="info-grid">
+        <!-- Origin -->
+        <div class="info-block">
+          <label>Starting Point</label>
+          <div class="value destination">{{ requestDetails.fromLocation || 'Not Specified' }}</div>
+        </div>
+
+        <!-- Destination -->
+        <div class="info-block">
+          <label>Destination</label>
+          <div class="value destination">{{ requestDetails.destination }}</div>
+        </div>
+
+        <!-- Duration -->
+        <div class="info-block">
+          <label>Travel Dates</label>
+          <div class="value dates">
+            {{ requestDetails.startDate | date:'mediumDate' }} 
+            <span class="separator">to</span> 
+            {{ requestDetails.endDate | date:'mediumDate' }}
+            <span class="duration-badge">{{ getDuration(requestDetails.startDate, requestDetails.endDate) }} Days</span>
+          </div>
+        </div>
+
+        <!-- Budget -->
+        <div class="info-block highlight-block">
+          <label>Estimated Budget</label>
+          <div class="value budget">{{ requestDetails.estimatedBudget | currency:'INR' }}</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Purpose Section -->
+      <div class="purpose-section">
+        <label>Business Purpose</label>
+        <p class="purpose-text">{{ requestDetails.purpose }}</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- 📋 Planned Trip Itinerary Audit Timeline -->
+      <div class="card border-0 shadow-sm" *ngIf="request?.itineraries && (request?.itineraries?.length ?? 0) > 0" style="border-radius: 12px; background: #ffffff; padding: 24px; margin-bottom: 24px;">
+        <h3 style="color: #1E3A8A; font-weight: 700; margin-bottom: 24px; margin-top: 0; font-size: 1.25rem;">📋 Planned Trip Itinerary Audit</h3>
+        
+        <div class="vertical-timeline" style="position: relative; padding-left: 32px;">
+          <!-- Guide track rule -->
+          <div style="position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: #E2E8F0;"></div>
+          
+          <div 
+            *ngFor="let day of request?.itineraries; let i = index" 
+            class="timeline-item"
+            style="position: relative; margin-bottom: 24px;"
+          >
+            <!-- Step pin identifier -->
+            <div 
+              class="timeline-pin"
+              style="position: absolute; left: -32px; top: 4px; width: 22px; height: 22px; border-radius: 50%; background: #0D9488; color: white; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; z-index: 2;"
+            >
+              {{ i + 1 }}
+            </div>
+            
+            <!-- Content Display capsule box -->
+            <div 
+              class="timeline-panel"
+              style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 16px;"
+            >
+              <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 8px;">
+                <span class="location" style="color: #1E3A8A; font-weight: 700; font-size: 0.95rem;">📍 Target: {{ day.location }}</span>
+                <span class="date-badge" style="background: #E2E8F0; color: #1E3A8A; font-size: 0.75rem; padding: 4px 8px; border-radius: 4px; font-weight: 600;">
+                  {{ day.date | date:'EEEE, MMM d, yyyy' }}
+                </span>
+              </div>
+              
+              <p class="activity-text" style="color: #475569; font-size: 0.875rem; line-height: 1.5; margin: 0 0 8px 0;">
+                <strong>Agenda:</strong> {{ day.activityDetails }}
+              </p>
+              
+              <div 
+                *ngIf="day.hotelOrAccommodation" 
+                class="accommodation-info" 
+                style="color: #475569; font-size: 0.8125rem; font-weight: 600; display: flex; align-items: center; gap: 4px; margin-top: 8px;"
+              >
+                🏨 Lodging/Stay: {{ day.hotelOrAccommodation }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rejection Alert -->
+      <div *ngIf="getStatusLabel(requestDetails.status) === 'Rejected'" class="card border-0 shadow-sm" style="border-radius: 12px; background: rgba(244, 63, 94, 0.08); border: 1px solid rgba(244, 63, 94, 0.2); padding: 20px; margin-bottom: 24px;">
+        <h3 style="color: #E11D48; font-weight: 700; margin-bottom: 8px; margin-top: 0; font-size: 1.1rem;">❌ Request Declined</h3>
+        <p style="margin: 0 0 8px 0; font-size: 0.9rem; color: #475569;">
+          <strong>Reason:</strong> {{ requestDetails.rejectionReason }}
+        </p>
+        <p style="margin: 0; font-size: 0.8rem; color: #64748B;" *ngIf="requestDetails.financeApprovedByName || requestDetails.managerApprovedByName || requestDetails.adminApprovedByName">
+          Declined by: {{ requestDetails.adminApprovedByName || requestDetails.financeApprovedByName || requestDetails.managerApprovedByName }}
+        </p>
+      </div>
+
+      <!-- 📝 Approval Audit Stamp Log -->
+      <div class="card border-0 shadow-sm" style="border-radius: 12px; background: #ffffff; padding: 24px; margin-bottom: 24px;">
+        <h3 style="color: #1E3A8A; font-weight: 700; margin-bottom: 20px; margin-top: 0; font-size: 1.25rem;">📝 Approval Audit Log</h3>
+        <div class="audit-log" style="display: flex; flex-direction: column; gap: 16px;">
+          <!-- Manager Approval -->
+          <div class="audit-item" style="display: flex; align-items: flex-start; gap: 12px;">
+            <div class="audit-icon" style="font-size: 1.25rem;">
+              {{ requestDetails.managerApprovedByName ? '✅' : '⏳' }}
+            </div>
+            <div class="audit-details">
+              <h4 style="margin: 0; font-size: 0.95rem; color: #1E3A8A; font-weight: 700;">Manager Review</h4>
+              <p style="margin: 4px 0 0 0; font-size: 0.875rem; color: #475569;">
+                Status: {{ requestDetails.managerApprovedByName ? 'Approved by ' + requestDetails.managerApprovedByName : 'Awaiting Review' }}
+              </p>
+            </div>
+          </div>
+
+          <!-- Finance Clearance -->
+          <div class="audit-item" style="display: flex; align-items: flex-start; gap: 12px;">
+            <div class="audit-icon" style="font-size: 1.25rem;">
+              {{ requestDetails.financeApprovedByName ? '✅' : '⏳' }}
+            </div>
+            <div class="audit-details">
+              <h4 style="margin: 0; font-size: 0.95rem; color: #1E3A8A; font-weight: 700;">Finance Auditing</h4>
+              <p style="margin: 4px 0 0 0; font-size: 0.875rem; color: #475569;">
+                Status: {{ requestDetails.financeApprovedByName ? 'Approved by ' + requestDetails.financeApprovedByName : 'Awaiting Review' }}
+              </p>
+            </div>
+          </div>
+
+          <!-- Admin Override -->
+          <div *ngIf="requestDetails.adminApprovedByName" class="audit-item" style="display: flex; align-items: flex-start; gap: 12px;">
+            <div class="audit-icon" style="font-size: 1.25rem; color: #1E3A8A;">⚡</div>
+            <div class="audit-details">
+              <h4 style="margin: 0; font-size: 0.95rem; color: #1E3A8A; font-weight: 700;">Admin Override</h4>
+              <p style="margin: 4px 0 0 0; font-size: 0.875rem; color: #475569;">
+                Direct Approval: Fully approved by Admin {{ requestDetails.adminApprovedByName }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider" *ngIf="request?.itineraries && (request?.itineraries?.length ?? 0) > 0"></div>
+
+      <!-- Action Buttons -->
+      <div class="action-container" *ngIf="requestDetails.status === 'Pending'">
+        <button class="btn-decline" (click)="openDeclineModal()">
+          <span class="icon">×</span> Decline Request
+        </button>
+        <button class="btn-approve" (click)="approveRequest()">
+          <span class="icon">✓</span> Approve Request
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #loading>
+    <div class="loading-state">
+      <div class="spinner"></div>
+      <p>Loading request details...</p>
+    </div>
+  </ng-template>
+
+  <!-- Decline Modal -->
+  <div class="modal-overlay" *ngIf="showDeclineModal">
+    <div class="modal-content bounce-in">
+      <h2>Decline Request</h2>
+      <p>Please provide a reason for declining this travel request.</p>
+      
+      <div class="form-group">
+        <label>Reason Category</label>
+        <select [(ngModel)]="declineReasonCategory">
+          <option value="">Select a reason...</option>
+          <option *ngFor="let reason of declineCategories" [value]="reason">{{ reason }}</option>
+        </select>
+      </div>
+
+      <div class="form-group" *ngIf="declineReasonCategory === 'Other'">
+        <label>Additional Details</label>
+        <textarea [(ngModel)]="customDeclineReason" rows="3" placeholder="Please specify..."></textarea>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-cancel" (click)="closeDeclineModal()">Cancel</button>
+        <button class="btn-confirm-decline" [disabled]="!declineReasonCategory" (click)="confirmDecline()">Confirm Decline</button>
+      </div>
+    </div>
+  </div>
+</div>

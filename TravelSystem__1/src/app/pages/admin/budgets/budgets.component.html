@@ -1,0 +1,172 @@
+<div class="manager-page-content">
+  <main class="main-content">
+    <div class="content-body">
+      
+      <!-- Welcome/Header Banner -->
+      <div class="welcome-banner">
+        <h1>Department Budgets</h1>
+        <p>Allocate capital limits and track active vs pending spending across teams.</p>
+      </div>
+
+      <!-- Overall System Statistics Cards -->
+      <div class="stats-grid">
+        <!-- Allocated Card -->
+        <div class="stat-card card">
+          <div class="stat-icon allocated">📊</div>
+          <div class="stat-info">
+            <span class="stat-label">Total System Budget</span>
+            <span class="stat-value">{{ totalAllocated | currency:'INR' }}</span>
+          </div>
+        </div>
+
+        <!-- Spent Card -->
+        <div class="stat-card card">
+          <div class="stat-icon spent">💰</div>
+          <div class="stat-info">
+            <span class="stat-label">Total Spent (Approved)</span>
+            <span class="stat-value text-success">{{ totalSpent | currency:'INR' }}</span>
+          </div>
+        </div>
+
+        <!-- Pending Card -->
+        <div class="stat-card card">
+          <div class="stat-icon pending">⏳</div>
+          <div class="stat-info">
+            <span class="stat-label">Total Pending (Oversight)</span>
+            <span class="stat-value text-warning">{{ totalPending | currency:'INR' }}</span>
+          </div>
+        </div>
+
+        <!-- Utilization Card -->
+        <div class="stat-card card">
+          <div class="stat-icon utilization">📈</div>
+          <div class="stat-info">
+            <span class="stat-label">Overall Utilization</span>
+            <span class="stat-value">{{ overallUtilization }}%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Columns Layout -->
+      <div class="columns-grid">
+        
+        <!-- Left: Budgets Grid List -->
+        <div class="budgets-panel card">
+          <h2>Allocations by Department</h2>
+          
+          <div class="budgets-list">
+            <div class="budget-item" *ngFor="let dept of budgets">
+              <div class="item-header">
+                <div class="dept-name">
+                  <h3>{{ dept.departmentName }}</h3>
+                  <span *ngIf="dept.budgetSpent > dept.budgetLimit && dept.budgetLimit > 0" class="alert-badge">
+                    Exceeded
+                  </span>
+                </div>
+                <button class="edit-btn" (click)="editDeptBudget(dept)" title="Edit allocation">✏️ Edit</button>
+              </div>
+
+              <div class="item-body">
+                <div class="metric-row">
+                  <div class="metric">
+                    <span class="lbl">Limit</span>
+                    <span class="val">{{ dept.budgetLimit | currency:'INR' }}</span>
+                  </div>
+                  <div class="metric">
+                    <span class="lbl">Spent</span>
+                    <span class="val text-success">{{ dept.budgetSpent | currency:'INR' }}</span>
+                  </div>
+                  <div class="metric">
+                    <span class="lbl">Pending</span>
+                    <span class="val text-warning">{{ dept.budgetPending | currency:'INR' }}</span>
+                  </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="progress-container">
+                  <div class="progress-bar-bg">
+                    <div 
+                      class="progress-bar-fill" 
+                      [ngClass]="getProgressColor(dept.utilizationPercentage)"
+                      [style.width.%]="dept.utilizationPercentage > 100 ? 100 : dept.utilizationPercentage"
+                    ></div>
+                  </div>
+                  <div class="progress-text">
+                    <span>Utilization</span>
+                    <span>{{ dept.utilizationPercentage }}%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="empty-state" *ngIf="budgets.length === 0">
+              <div class="empty-icon">📊</div>
+              <p>No department budgets configured yet.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Set Budget Form -->
+        <div class="form-panel card">
+          <h2>Allocate Budget</h2>
+          <p class="panel-subtitle">Allocate a capital limit or update an existing department's budget boundary.</p>
+
+          <form (submit)="submitBudget(); $event.preventDefault()">
+            <!-- Department Selection -->
+            <div class="form-group">
+              <label>Select Department</label>
+              <select 
+                class="form-control" 
+                [(ngModel)]="selectedDept" 
+                name="selectedDept"
+                (change)="onDeptChange()"
+                required
+              >
+                <option value="">Choose department...</option>
+                <option *ngFor="let dept of departments" [value]="dept">{{ dept }}</option>
+                <option value="Other">Other (Custom Department)</option>
+              </select>
+            </div>
+
+            <!-- Custom Department Input -->
+            <div class="form-group animate-fade" *ngIf="showCustomDept">
+              <label>Custom Department Name</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                [(ngModel)]="customDeptName" 
+                name="customDeptName"
+                placeholder="e.g. Sales Division" 
+                required
+              />
+            </div>
+
+            <!-- Budget Limit -->
+            <div class="form-group">
+              <label>Budget Limit (₹)</label>
+              <input 
+                type="number" 
+                class="form-control" 
+                [(ngModel)]="budgetLimit" 
+                name="budgetLimit"
+                placeholder="e.g. 50000" 
+                min="0"
+                required
+              />
+            </div>
+
+            <button 
+              type="submit" 
+              class="submit-btn"
+              [disabled]="!selectedDept || (selectedDept === 'Other' && !customDeptName.trim()) || budgetLimit === null || budgetLimit < 0"
+            >
+              Confirm Allocation
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+</div>

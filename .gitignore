@@ -1,0 +1,10 @@
+/Uploads/  
+"Constraints PiA.sql"  
+SQLQuery1.sql  
+implementation_plan.md  
+/bin/  
+/obj/  
+*.user  
+/node_modules/  
+/dist/  
+/.vs/  
